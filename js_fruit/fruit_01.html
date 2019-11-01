@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>fruit_01</title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#con{
+			margin: 20px 50px;
+		}
+		#fruit>li{
+			list-style: none;
+			width: 200px;
+			height: 50px;
+			font:20px/50px "palatino linotype";
+			background-color: rgb(106,203,170);
+			color: aliceblue;
+			text-align: center;
+			margin: 4px 0;
+		}
+		#fruit>li>a{
+			float: right;
+			text-decoration: none;
+			color: #F0F8FF;
+			position: relative;
+			right: 7px;
+		}
+		#fruit~input{
+		
+			font:20px/50px "palatino linotype";
+			margin-top: 20px;
+		}
+		#fruit~input[type=text]{
+	        background-color: rgb(152,152,152);	
+			width: 140px;
+			height: 40px;
+			text-align: center;
+		}
+		#fruit~input[type=button]{
+			width: 50px;
+			height: 40px;
+			background-color: rgb(169,68,86);
+			color: #F0F8FF;
+			border: none;
+			display: inline;
+			vertical-align: bottom;
+		}
+		</style>
+	</head>
+	
+	<body>
+		<div id="con">
+			<ul id="fruit">
+				<li>苹果<a href="">x</a></li>
+				<li>香蕉<a href="">x</a></li>
+			</ul>
+			<div id="sbb">
+				<input type="text" name="fruit"  />
+				<input id="qd" type="button" value="确定">
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+			
+			let ul = document.getElementsByTagName("ul")
+			
+			// 删水果
+			function delFruit(evt){
+				evt.preventDefault()
+				evt.target.parentElement.remove()
+			}
+			(function(){
+				let del = document.getElementsByTagName("a")
+				len = del.length
+				for(x=1;x<len;x++){
+					del = del[x]
+					del.onclick = delFruit
+				}
+			})()
+			
+			// 加水果
+			function addFruit(){
+				let inputt = document.getElementById('sbb').firstChild
+				let fruitName = inputt.value
+				inputt.value = ''
+				if(fruitName.length == 0){
+					alert('请输入有效水果名:')
+					return
+				}
+			
+			
+			// 添加
+			let addLi = document.createElement('li')
+			addLi.innerText = fruitName
+			let addX = document.createElement('a')
+			addX.innerText = 'x'
+			addX.addEventListener()
+			
+			
+			
+			}
+			
+			
+		</script>
+	</body>
+</html>

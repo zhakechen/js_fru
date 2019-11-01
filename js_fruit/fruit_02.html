@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>fruit_02</title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#con{
+			margin: 20px 50px;
+		}
+		#fruits>li{
+			list-style: none;
+			width: 200px;
+			height: 50px;
+			font:20px/50px "palatino linotype";
+			background-color: rgb(106,203,170);
+			color: aliceblue;
+			text-align: center;
+			margin: 4px 0;
+		}
+		#fruits>li>a{
+			float: right;
+			text-decoration: none;
+			color: #F0F8FF;
+			position: relative;
+			right: 7px;
+		}
+		#fruits~input{
+		
+			font:20px/50px "palatino linotype";
+			margin-top: 20px;
+		}
+		#fruits~input[type=text]{
+		    background-color: rgb(152,152,152);	
+			width: 140px;
+			height: 40px;
+			text-align: center;
+		}
+		#fruits~input[type=button]{
+			width: 50px;
+			height: 40px;
+			background-color: rgb(169,68,86);
+			color: #F0F8FF;
+			border: none;
+			display: inline;
+			vertical-align: bottom;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="con">
+			<ul id="fruits">
+				<li>苹果<a href="">x</a></li>
+				<li>香蕉<a href="">x</a></li>
+			</ul>
+				<input type="text" name="fruit"  />
+				<input id="qd" type="button" value="确定">
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			function removeItem(evt) {
+				evt.preventDefault()
+				$(evt.target).parent().remove()
+			}
+			$('#fruits>li>a').on('click', removeItem)
+			const input = $('input[name=fruit]')
+			$('#qd').on('click', (evt) => {
+				let fruitName = input.val().trim()
+				if (fruitName.length > 0) {
+					$('#fruits').append(
+						$('<li>').text(fruitName).append(
+							$('<a>').html('x').attr('href', '')
+								.on('click', removeItem)
+						)
+					)
+				}
+				input.val('')
+				input.get(0).focus()
+			})
+		</script>
+	</body>
+</html>

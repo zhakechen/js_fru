@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>fruit_03</title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#con{
+			margin: 20px 50px;
+		}
+		#fruit>li{
+			list-style: none;
+			width: 200px;
+			height: 50px;
+			font:20px/50px "palatino linotype";
+			background-color: rgb(106,203,170);
+			color: aliceblue;
+			text-align: center;
+			margin: 4px 0;
+		}
+		#fruit>li>a{
+			float: right;
+			text-decoration: none;
+			color: #F0F8FF;
+			position: relative;
+			right: 7px;
+		}
+		#fruit~input{
+		
+			font:20px/50px "palatino linotype";
+			margin-top: 20px;
+		}
+		#fruit~input[type=text]{
+		    background-color: rgb(152,152,152);	
+			width: 140px;
+			height: 40px;
+			text-align: center;
+		}
+		#fruit~input[type=button]{
+			width: 50px;
+			height: 40px;
+			background-color: rgb(169,68,86);
+			color: #F0F8FF;
+			border: none;
+			display: inline;
+			vertical-align: bottom;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="con">
+			<ul id="fruit">
+				<li v-for="(fruit, index) of fruits">{{fruit}}<a href="" @click.prevent="removeItem(index)">x</a></li>
+				
+			</ul>
+				<input type="text" v-model="fruitName" />
+				<input id="qd" type="button" value="确定"@click="addItem()">
+		</div>
+		<script src="js/vue.min.js"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:"#con",
+				data:{
+					fruits:['苹果','香蕉'],
+					fruitName :""
+				},
+				methods: {
+					removeItem: function (index){
+						// let index = this.fruits.indexOf(fruit)
+						this.fruits.splice(index, 1)
+					},
+					addItem() {
+						if (this.fruitName.trim().length > 0){
+							this.fruits.push(this.fruitName)
+						}
+						this.fruitName = ''
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>
